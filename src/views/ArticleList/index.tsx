@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import WarrperPagination from '@/components/Pagination'
 import ArticleItem from '@/views/ArticleList/components/ArticleItem'
 import PinnedArticle from '@/views/Home/components/PinnedArticle'
-import { useRequest, useMount } from 'ahooks'
-import { getArticleList } from '@/api/Articles'
 import styles from '@/views/ArticleList/index.module.scss'
 import { useNavigate } from 'react-router-dom'
+import { FC } from 'react'
 export interface Article {
   title: string
   simpleDesc: string
@@ -15,28 +13,21 @@ export interface Article {
   time: string
   isLeftRight?: boolean // 是否左右布局显示
   isPinned?: boolean // 是否置顶
+  isCloseComment?: boolean // 是否关闭评论
+  commentCount?: number // 评论条数
 }
-const ArticleList = () => {
-  const [articleList, setArticleList] = useState<Article[]>()
+interface ArticleListProps {
+  articleList: Article[]
+}
 
+const ArticleList: FC<ArticleListProps> = ({ articleList }) => {
   const navigate = useNavigate()
-  // 获取文章列表
-  const { run } = useRequest(getArticleList, {
-    manual: true,
-    onSuccess: (result) => {
-      if (result.code === 1) {
-        setArticleList(result.data)
-      }
-    },
-  })
 
   // 预览文章详情
   const onPreviewDesc = (articleId: number) => {
     navigate(`/article/${articleId}`)
   }
-  useMount(() => {
-    run()
-  })
+
   return (
     <div className={styles['article-list']}>
       {articleList?.map((article, index) =>

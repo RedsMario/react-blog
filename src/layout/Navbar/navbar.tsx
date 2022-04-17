@@ -55,33 +55,33 @@ const menuList = [
       },
     ],
   },
-  {
-    title: '组成',
-    list: [
-      {
-        label: '分类',
-        icon: <AppstoreOutlined />,
-        children: [
-          {
-            label: '设计作品',
-            path: '/projects',
-          },
-          {
-            label: '技巧杂烩',
-            path: '/skill',
-          },
-          {
-            label: '生活随笔',
-            path: '/lifeEssay',
-          },
-          {
-            label: '兴趣爱好',
-            path: '/hobby',
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   title: '组成',
+  //   list: [
+  //     {
+  //       label: '分类',
+  //       icon: <AppstoreOutlined />,
+  //       children: [
+  //         {
+  //           label: '设计作品',
+  //           path: '/projects',
+  //         },
+  //         {
+  //           label: '技巧杂烩',
+  //           path: '/skill',
+  //         },
+  //         {
+  //           label: '生活随笔',
+  //           path: '/lifeEssay',
+  //         },
+  //         {
+  //           label: '兴趣爱好',
+  //           path: '/hobby',
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ]
 interface NavBarProps {
   width: number

@@ -1,7 +1,7 @@
 /*
  * @Author: Mario
  * @Date: 2022-03-01 18:27:32
- * @LastEditTime: 2022-03-08 09:39:15
+ * @LastEditTime: 2022-04-09 17:18:48
  * @LastEditors: Mario
  * @Description: 文章详情组件
  */
@@ -13,11 +13,10 @@ import BlogHeader from '@/components/BlogHeader'
 import VditorPreview from '@/components/VditorPreview'
 import Breadcrumb from '@/components/Breadcrumb'
 import { diffDom, toTree } from '@/utils'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-import { CategoryTypes } from '@/store/action-types'
 import { actionCreators } from '@/store'
-const { setCategoryState } = actionCreators
 // import MarkdownIt from 'markdown-it'
 // import MarkdownContainer from 'markdown-it-container'
 interface IPreviewOptions {
@@ -45,16 +44,26 @@ interface IPreviewOptions {
 }
 const TestVditorEditor = () => {
   const [markdown, setMarkdown] = useState('')
+  const [headerData, setHeaderData] = useState({ title: '', desc: '' })
   const params = useParams()
 
   const dispatch = useDispatch()
+  const { setCategoryState } = bindActionCreators(actionCreators, dispatch)
   // const md = MarkdownIt()
   // 获取文章详情
   const { run } = useRequest(() => getArticleDesc({ id: params.id }), {
     manual: true,
     onSuccess: async (result) => {
       if (result.code === 1) {
-        setMarkdown(handleHtml(result.data))
+        const { articleDesc, ...rest } = result.data
+        setHeaderData({
+          ...rest,
+          isCenter: true,
+          customStyle: {
+            fontSize: '24px',
+          },
+        })
+        setMarkdown(handleHtml(articleDesc))
       }
     },
   })
@@ -101,14 +110,14 @@ const TestVditorEditor = () => {
   //   })
   // }
 
-  const headerData = {
-    title: '相册图片',
-    desc: '美好的事情值得纪念呦 ~ ',
-    isCenter: true,
-    customStyle: {
-      fontSize: '24px',
-    },
-  }
+  // const headerData = {
+  //   title: '相册图片',
+  //   desc: '美好的事情值得纪念呦 ~ ',
+  //   isCenter: true,
+  //   customStyle: {
+  //     fontSize: '24px',
+  //   },
+  // }
   // 文章预览配置
   const options: IPreviewOptions = {
     mode: 'dark',
@@ -119,19 +128,17 @@ const TestVditorEditor = () => {
     },
   }
 
+  // 根据h标签生成目录
   const asyncRender = () => {
     const root = document.querySelector('.vditor-reset')
     const tags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6']
-
     const hTags = diffDom(root, [], tags).map((node) => ({
       hLevel: Number(node.tagName.replace('H', '')),
       href: `#${node.id}`,
       title: node.id,
     }))
     const tree = toTree(hTags)
-    console.log(tree)
-
-    dispatch({ type: CategoryTypes.SET_CATEGORY, payload: tree })
+    setCategoryState(tree)
   }
   useEffect(() => {
     run()

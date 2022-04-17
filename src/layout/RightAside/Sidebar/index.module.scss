@@ -4,6 +4,9 @@
     width: 100%;
     justify-content: space-around;
   }
+  :global(.ant-anchor-wrapper){
+    max-height: calc(100vh - 280px)!important;
+  }
   :global(.ant-tabs-tab) {
     margin: 0 10px !important;
     padding: 0 !important;
@@ -26,4 +29,8 @@
   .directory {
     padding: 20px;
   }
+}
+.sidebar-fixed {
+  position: fixed;
+    width: 240px;
 }

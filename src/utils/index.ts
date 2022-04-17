@@ -114,3 +114,13 @@ export const diffDom = (root: any, nodes: Element[] = [], tags: string[] = []) =
   }
   return nodes
 }
+/**
+ * @description: html字符串转换真实Dom
+ * @param {string} txt
+ * @return {*}
+ */
+export const stringToDom = (txt: string) => {
+  const parser = new DOMParser()
+  const doc = parser.parseFromString(txt, 'text/xml')
+  return doc
+}

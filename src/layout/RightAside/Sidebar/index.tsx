@@ -1,16 +1,19 @@
 import { useState } from 'react'
 import { Tabs, Anchor } from 'antd'
 import { ReactSVG } from 'react-svg'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { State } from '@/store'
+import classnames from 'classnames'
 import likeoutSvg from '@/assets/svgs/likeout.svg'
 import giftSvg from '@/assets/svgs/gift.svg'
 import commentSvg from '@/assets/svgs/comment.svg'
+
 import NewArticle from '@/layout/RightAside/Sidebar/components/NewArticle'
 import BlogInfo from '@/layout/RightAside/Sidebar/components/BlogInfo'
 import BabelCloud from '@/layout/RightAside/Sidebar/components/BabelCloud'
 import styles from '@/layout/RightAside/Sidebar/index.module.scss'
-import { useSelector } from 'react-redux'
-import { State } from '@/store'
+
 const { TabPane } = Tabs
 const { Link } = Anchor
 interface Tab {
@@ -92,29 +95,31 @@ const Sidebar = () => {
     },
   ]
 
+  // tab切换
   const onTabClick = (key: string) => {
     setCurrentIndex(Number(key))
   }
-  const diffNodes = (arr: any) => {
+  // 生成目录
+  const generateCatetory = (arr: any) => {
     return arr.map((link: any) => {
       if (!link.children) {
         return <Link key={link.href} href={link.href} title={link.title} />
       } else {
         return (
           <Link key={link.href} href={link.href} title={link.title}>
-            {diffNodes(link.children)}
+            {generateCatetory(link.children)}
           </Link>
         )
       }
     })
   }
   return (
-    <div className={styles.sidebar}>
+    <div className={classnames(styles.sidebar, isDirectory ? styles['sidebar-fixed'] : '')}>
       {isDirectory ? (
         <div className={styles.directory}>
           <h5 style={{ fontSize: '16px', marginBottom: '15px', color: 'inherit' }}>文章目录</h5>
           <Anchor offsetTop={80} targetOffset={80} showInkInFixed>
-            {diffNodes(category)}
+            {generateCatetory(category)}
           </Anchor>
         </div>
       ) : (
@@ -137,8 +142,12 @@ const Sidebar = () => {
           ))}
         </Tabs>
       )}
-      <BlogInfo />
-      <BabelCloud />
+      {!isDirectory ? (
+        <>
+          <BlogInfo />
+          <BabelCloud />
+        </>
+      ) : null}
     </div>
   )
 }

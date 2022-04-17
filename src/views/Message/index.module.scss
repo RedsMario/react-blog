@@ -1,0 +1,147 @@
+.message {
+  .entry-thumbnail {
+    position: relative;
+    .item-thumb {
+      min-height: 250px;
+      position: relative;
+      display: block;
+      background-position: 50% 50%;
+      background-size: cover;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+    }
+  }
+  .post-message {
+    background-color: #fff;
+    padding: 30px;
+    .entry-content {
+      color: rgb(119, 119, 119);
+      p {
+        margin-bottom: 20px;
+      }
+      h2 {
+        color: #666;
+        line-height: 1.4;
+        font-weight: 700;
+        margin: 30px 0 10px 0;
+        background: linear-gradient(to bottom, transparent 60%, rgba(189, 202, 219, 0.3) 0) no-repeat;
+        width: auto;
+        display: inline;
+        font-size: 24px;
+      }
+      a {
+        color: #58666e;
+        border-bottom: 1px solid #999;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+      .flex-column {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+        .flex-block {
+          line-height: 2em;
+          .tip {
+            margin-bottom: 10px;
+            color: #777;
+            font-size: 13px;
+            &.small {
+              padding: 0 10px;
+            }
+            &.simple {
+              border: none;
+              border-radius: 5px !important;
+            }
+            &.inlineBlock {
+              display: inline-block;
+              width: 100%;
+            }
+            &.share {
+              background: #efefef;
+            }
+          }
+        }
+        .flex-block:nth-child(2) {
+          .tip {
+            background-color: #eef6fd;
+          }
+        }
+      }
+      .experience {
+        font-size: 13px;
+      }
+      .support-author {
+        padding: 10px 0 10px;
+        text-align: center;
+        clear: both;
+        button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 auto;
+          max-width: 100%;
+          overflow-y: hidden;
+          overflow-x: scroll;
+          transition: all 0.3s ease;
+        }
+        .btn {
+          font-size: 14px;
+          line-height: 1.42857143;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          touch-action: manipulation;
+          cursor: pointer;
+          user-select: none;
+        }
+        .btn-pay {
+          // margin-right: 10px;
+        }
+        .like_button {
+          background: #fff;
+          color: #777;
+          .unlike_svg {
+            position: static;
+          }
+        }
+        .btn_post_footer {
+          margin-bottom: 15px;
+          padding: 5px 15px;
+          border: none;
+          position: relative;
+          svg {
+            width: 15px;
+            height: 15px;
+            vertical-align: -2px;
+            margin-right: 5px;
+          }
+        }
+        .box-shadow-wrap-lg {
+          box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+        }
+        .btn-rounded {
+          border-radius: 50px;
+        }
+        .shake-little {
+          display: inherit;
+          transform-origin: center center;
+        }
+        .mt20 {
+          margin-top: 20px;
+        }
+        .active {
+          background: #b24950;
+          color: #fff;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+  ul {
+    padding-left: 20px;
+    li {
+      list-style: disc;
+      margin: 5px 0;
+    }
+  }
+}

@@ -1,14 +1,15 @@
+// Action声明
 export interface LoadingAction {
   type: string
   payload: boolean
-}
-export enum ActionTypes {
-  LOADING = 'loading',
 }
 export interface CategoryAction {
   type: string
   payload: any
 }
-export enum CategoryTypes {
+
+// Action类型枚举
+export enum ActionTypes {
+  LOADING = 'LOADING',
   SET_CATEGORY = 'SET_CATEGORY',
 }

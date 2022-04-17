@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux'
-import { LoadingAction, CategoryAction } from '@/store/action-types'
+import { LoadingAction, CategoryAction, ActionTypes } from '@/store/action-types'
 
 /**
  * @description: 修改Loading状态
@@ -9,7 +9,7 @@ import { LoadingAction, CategoryAction } from '@/store/action-types'
 export const editLoadingState = (loadingState: boolean) => {
   return (dispatch: Dispatch<LoadingAction>) => {
     dispatch({
-      type: 'loading',
+      type: ActionTypes.LOADING,
       payload: loadingState,
     })
   }
@@ -22,7 +22,7 @@ export const editLoadingState = (loadingState: boolean) => {
 export const setCategoryState = (category: any) => {
   return (dispatch: Dispatch<CategoryAction>) => {
     dispatch({
-      type: 'SET_CATETORY',
+      type: ActionTypes.SET_CATEGORY,
       payload: category,
     })
   }

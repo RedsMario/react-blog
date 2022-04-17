@@ -14,7 +14,7 @@ const About = () => {
   const buttonRef = useRef<HTMLButtonElement>(null)
   const headerData = {
     title: '关于我',
-    desc: '',
+    desc: '路漫漫其修远兮，吾将上下而求索 ~',
     isCenter: true,
     customStyle: {
       fontSize: '30px',

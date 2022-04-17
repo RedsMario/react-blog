@@ -1,0 +1,70 @@
+.message-from {
+  margin-bottom: 20px;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  border: none;
+  box-shadow: 0 0 5px rgb(0 0 0 / 8%);
+  .panel-body {
+    padding: 15px;
+    overflow: hidden;
+  }
+  .thumb-sm {
+    display: inline-block;
+    width: 40px;
+    height: auto;
+  }
+  .m-r {
+    margin-right: 15px;
+  }
+  .avatar {
+    position: relative;
+    display: block;
+    white-space: nowrap;
+    border-radius: 500px;
+    margin: 10px auto;
+    margin-right: 15px;
+  }
+  .pull-left {
+    float: left !important;
+  }
+
+  .badge {
+    background-color: #cfdadd;
+  }
+  .badge,
+  .label {
+    font-weight: 700;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 20%);
+  }
+  .pull-right {
+    float: right !important;
+  }
+  .badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
+  }
+  .bg-info {
+    color: #dcf2f8;
+    background-color: #23b7e5;
+  }
+
+  .text-ellipsis {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .text-muted {
+    color: #a0a0a0;
+  }
+}

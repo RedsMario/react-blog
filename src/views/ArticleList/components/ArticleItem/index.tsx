@@ -9,7 +9,7 @@ interface ArticleProps extends Article {
   index: number
   handleClick?: (articleId: number) => void
 }
-const ArticleItem: FC<ArticleProps> = ({ title, simpleDesc, article, author, banner, isLeftRight, time, handleClick, index }) => {
+const ArticleItem: FC<ArticleProps> = ({ title, simpleDesc, article, author, banner, isLeftRight, time, commentCount, isCloseComment, handleClick, index }) => {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -96,7 +96,7 @@ const ArticleItem: FC<ArticleProps> = ({ title, simpleDesc, article, author, ban
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                       </svg>
                     </span>
-                    <span>关闭评论</span>
+                    <span>{isCloseComment ? '关闭' : `${commentCount || 0}条`}评论</span>
                   </li>
                 </div>
               </div>
